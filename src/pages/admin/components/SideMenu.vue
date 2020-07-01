@@ -25,6 +25,7 @@
       <el-menu-item index="/contest">{{$t('m.Contest_List')}}</el-menu-item>
       <el-menu-item index="/contest/create">{{$t('m.Create_Contest')}}</el-menu-item>
     </el-submenu>
+    <el-menu-item index="/course"><i class="el-icon-fa-book"></i>{{$t('m.Course')}}</el-menu-item>
   </el-menu>
 </template>
 

@@ -27,6 +27,12 @@
               </div>
             </Panel>
             <Table :columns="columns" :data="contest_table" disabled-hover style="margin-bottom: 40px;"></Table>
+            <Panel shadow>
+              <div slot="title">
+                {{$t('m.Course')}}
+              </div>
+              <Table :columns="courseColumns" :data="course_table" disabled-hover style="margin-bottom: 40px;"></Table>
+            </Panel>
           </div>
         </template>
       </div>
@@ -93,6 +99,7 @@
         btnLoading: false,
         contestID: '',
         contestPassword: '',
+        course_table: [],
         columns: [
           {
             title: this.$i18n.t('m.StartAt'),
@@ -124,6 +131,27 @@
               return h('span', data.row.created_by.username)
             }
           }
+        ],
+        courseColumns: [
+          {
+            title: '#',
+            width: 100,
+            key: 'id'
+          },
+          {
+            title: this.$i18n.t('m.Course_Name'),
+            width: 200,
+            key: 'name'
+          },
+          {
+            title: this.$i18n.t('m.Course_Academic_Year'),
+            width: 150,
+            key: 's_year'
+          },
+          {
+            title: this.$i18n.t('m.Course_Short_Description'),
+            key: 'short_description'
+          }
         ]
       }
     },
@@ -134,6 +162,7 @@
         this.changeDomTitle({title: res.data.data.title})
         let data = res.data.data
         let endTime = moment(data.end_time)
+        this.course_table = data.course
         if (endTime.isAfter(moment(data.now))) {
           this.timer = setInterval(() => {
             this.$store.commit(types.NOW_ADD_1S)

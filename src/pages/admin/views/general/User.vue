@@ -23,15 +23,11 @@
         style="width: 100%">
         <el-table-column type="selection" width="55"></el-table-column>
 
-        <el-table-column prop="id" label="ID"></el-table-column>
+        <el-table-column prop="id" label="ID" width="60"></el-table-column>
 
         <el-table-column prop="username" label="Username"></el-table-column>
 
-        <el-table-column prop="create_time" label="Create Time">
-          <template slot-scope="scope">
-            {{scope.row.create_time | localtime }}
-          </template>
-        </el-table-column>
+        <el-table-column prop="sno" label="Student No"></el-table-column>
 
         <el-table-column prop="last_login" label="Last Login">
           <template slot-scope="scope">
@@ -207,6 +203,11 @@
                 <el-option label="Own" value="Own"></el-option>
                 <el-option label="All" value="All"></el-option>
               </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="18">
+            <el-form-item :label="$t('m.Student_No')">
+              <el-input v-model="user.sno"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">

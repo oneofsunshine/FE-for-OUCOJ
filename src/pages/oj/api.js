@@ -27,11 +27,12 @@ export default {
       data
     })
   },
-  checkUsernameOrEmail (username, email) {
-    return ajax('check_username_or_email', 'post', {
+  checkUsernameOrEmailOrSno (username, email, sno) {
+    return ajax('check_username_or_email_or_sno', 'post', {
       data: {
         username,
-        email
+        email,
+        sno
       }
     })
   },
@@ -266,6 +267,21 @@ export default {
   },
   updateACInfoCheckedStatus (data) {
     return ajax('admin/contest/acm_helper', 'put', {
+      data
+    })
+  },
+  getCourseList (offset, limit, isSelected) {
+    let params = {
+      offset,
+      limit,
+      is_selected: isSelected
+    }
+    return ajax('course_list', 'get', {
+      params
+    })
+  },
+  addOrRemoveUserContest (data) {
+    return ajax('course_list', 'post', {
       data
     })
   }

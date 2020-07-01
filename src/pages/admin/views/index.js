@@ -8,11 +8,15 @@ import Problem from './problem/Problem.vue'
 import ProblemList from './problem/ProblemList.vue'
 import ContestList from './contest/ContestList.vue'
 import Contest from './contest/Contest.vue'
+import CourseList from './course/CourseList.vue'
+import CourseContestList from './course/CourseContestList.vue'
+import CourseUserList from './course/CourseUserList.vue'
+import CourseUserRequestList from './course/CourseUserRequestList.vue'
 import Login from './general/Login.vue'
 import Home from './Home.vue'
 import ProblemImportOrExport from './problem/ImportAndExport.vue'
 
 export {
-  Announcement, User, Conf, JudgeServer, Problem, ProblemList, Contest,
-  ContestList, Login, Home, PruneTestCase, Dashboard, ProblemImportOrExport
+  Announcement, User, Conf, JudgeServer, Problem, ProblemList, Contest, CourseUserRequestList,
+  ContestList, CourseList, CourseContestList, CourseUserList, Login, Home, PruneTestCase, Dashboard, ProblemImportOrExport
 }

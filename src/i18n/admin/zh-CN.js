@@ -120,5 +120,10 @@ export const m = {
   Welcome_to_Login: '欢迎登录 OnlineJudge 后台管理系统',
   GO: '登录',
   username: '用户名',
-  password: '密码'
+  password: '密码',
+  Course: '课程',
+  Course_List: '课程列表',
+  Course_Name: '选课号',
+  Course_Short_Description: '课程简介',
+  Course_Academic_Year: '课程学年'
 }

@@ -158,6 +158,12 @@ export default [
         path: 'security',
         meta: {requiresAuth: true, title: 'Security Settings'},
         component: Setting.SecuritySetting
+      },
+      {
+        name: 'course-setting',
+        path: 'course',
+        meta: {requiresAuth: true, title: 'Course Settings'},
+        component: Setting.CourseSetting
       }
     ]
   },

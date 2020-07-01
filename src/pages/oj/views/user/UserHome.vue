@@ -9,6 +9,7 @@
           <span v-if="profile.user" class="emphasis">{{profile.user.username}}</span>
           <span v-if="profile.school">@{{profile.school}}</span>
         </p>
+        <span v-if="profile.user.sno" class="emphasis">SNo: {{profile.user.sno}}</span>
         <p v-if="profile.mood">
           {{profile.mood}}
         </p>

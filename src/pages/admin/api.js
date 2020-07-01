@@ -294,6 +294,66 @@ export default {
     return ajax('export_problem', 'post', {
       data
     })
+  },
+  getCourseList (offset, limit, keyword) {
+    let params = {paging: true, offset, limit}
+    if (keyword) {
+      params.keyword = keyword
+    }
+    return ajax('admin/courses', 'get', {
+      params: params
+    })
+  },
+  updateCourse (data) {
+    return ajax('admin/courses', 'put', {
+      data
+    })
+  },
+  // 添加公告
+  createCourse (data) {
+    return ajax('admin/courses', 'post', {
+      data
+    })
+  },
+  deleteCourse (id) {
+    return ajax('admin/courses', 'delete', {
+      params: {
+        id
+      }
+    })
+  },
+  getCourseContestList (params) {
+    params = utils.filterEmptyValue(params)
+    return ajax('admin/course/contest', 'get', {
+      params
+    })
+  },
+  addOrRemoveCourseContest (data) {
+    return ajax('admin/course/contest', 'post', {
+      data
+    })
+  },
+  getCourseUserList (params) {
+    params = utils.filterEmptyValue(params)
+    return ajax('admin/course/user', 'get', {
+      params
+    })
+  },
+  addOrRemoveCourseUser (data) {
+    return ajax('admin/course/user', 'post', {
+      data
+    })
+  },
+  getCourseUserRequestList (params) {
+    params = utils.filterEmptyValue(params)
+    return ajax('admin/course/user_requests', 'get', {
+      params
+    })
+  },
+  agreeOrRefuseUserRequests (data) {
+    return ajax('admin/course/user_requests', 'post', {
+      data
+    })
   }
 }
 

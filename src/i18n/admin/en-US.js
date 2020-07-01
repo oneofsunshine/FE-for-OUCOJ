@@ -120,5 +120,10 @@ export const m = {
   Welcome_to_Login: 'Welcome to Login',
   GO: 'GO',
   username: 'username',
-  password: 'password'
+  password: 'password',
+  Course: 'Course',
+  Course_List: 'Course List',
+  Course_Name: 'Create No',
+  Course_Short_Description: 'Short Description',
+  Course_Academic_Year: 'Academic Year'
 }

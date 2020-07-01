@@ -11,6 +11,11 @@
         <Icon type="ios-email-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
+      <FormItem prop="sno">
+        <Input v-model="formRegister.sno" :placeholder="$t('m.Student_No')" size="large" @on-enter="handleRegister">
+        <Icon type="android-checkbox-outline" slot="prepend"></Icon>
+        </Input>
+      </FormItem>
       <FormItem prop="password">
         <Input type="password" v-model="formRegister.password" :placeholder="$t('m.RegisterPassword')" size="large" @on-enter="handleRegister">
         <Icon type="ios-locked-outline" slot="prepend"></Icon>
@@ -66,7 +71,16 @@
     },
     data () {
       const CheckUsernameNotExist = (rule, value, callback) => {
-        api.checkUsernameOrEmail(value, undefined).then(res => {
+        api.checkUsernameOrEmailOrSno(value, undefined, undefined).then(res => {
+          if (res.data.data.username === true) {
+            callback(new Error(this.$i18n.t('m.The_username_already_exists')))
+          } else {
+            callback()
+          }
+        }, _ => callback())
+      }
+      const CheckSnoNotExist = (rule, value, callback) => {
+        api.checkUsernameOrEmailOrSno(undefined, undefined, value).then(res => {
           if (res.data.data.username === true) {
             callback(new Error(this.$i18n.t('m.The_username_already_exists')))
           } else {
@@ -75,7 +89,7 @@
         }, _ => callback())
       }
       const CheckEmailNotExist = (rule, value, callback) => {
-        api.checkUsernameOrEmail(undefined, value).then(res => {
+        api.checkUsernameOrEmailOrSno(undefined, value, undefined).then(res => {
           if (res.data.data.email === true) {
             callback(new Error(this.$i18n.t('m.The_email_already_exists')))
           } else {
@@ -102,6 +116,7 @@
         btnRegisterLoading: false,
         formRegister: {
           username: '',
+          sno: '',
           password: '',
           passwordAgain: '',
           email: '',
@@ -111,6 +126,10 @@
           username: [
             {required: true, trigger: 'blur'},
             {validator: CheckUsernameNotExist, trigger: 'blur'}
+          ],
+          sno: [
+            {required: true, trigger: 'blur'},
+            {validator: CheckSnoNotExist, trigger: 'blur'}
           ],
           email: [
             {required: true, type: 'email', trigger: 'blur'},
